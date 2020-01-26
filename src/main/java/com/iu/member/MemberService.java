@@ -81,12 +81,16 @@ public class MemberService {
 	}
 	
 	public ModelAndView list(Pager pager) throws Exception {
+		pager.makeRow();
+		int totalCount = memberDAO.totalCount();
+		pager.paging(totalCount);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("mem", memberDAO.list(pager));
 		mv.addObject("pager", pager);
 		mv.setViewName("member/list");
 		mv.addObject("iu", "master");
 		System.out.println("Servicelist");
+		System.out.println(pager.getCurBlock());
 		return mv;
 	}
 	

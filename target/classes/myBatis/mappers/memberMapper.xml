@@ -27,5 +27,9 @@
 		select * from member order by id desc) M)
 		where R between #{startRow} and #{lastRow}
 	</select>
+	
+	<select id="totalCount" resultType="Integer">
+		select count(id) from member
+	</select>
 		
 </mapper>  

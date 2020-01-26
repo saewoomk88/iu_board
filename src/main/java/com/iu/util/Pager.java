@@ -34,7 +34,7 @@ public class Pager {
 	}
 	public int getCurPage() {
 		if(curPage==0) {
-			curPage=1;
+			this.curPage=1;
 		}
 		return curPage;
 	}

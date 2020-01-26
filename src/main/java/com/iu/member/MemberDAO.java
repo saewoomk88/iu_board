@@ -34,7 +34,12 @@ public class MemberDAO {
 	}
 	
 	public List<MemberDTO>list(Pager pager)throws Exception{
+		System.out.println(pager);
 		return sqlSession.selectList(NAMESPACE+"list", pager);
+	}
+	
+	public int totalCount()throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"totalCount");
 	}
 	
 	

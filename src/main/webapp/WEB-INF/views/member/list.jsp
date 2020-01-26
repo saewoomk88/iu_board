@@ -74,8 +74,9 @@ a:hover {
 						
 					
 					<%
-					String[] n = request.getParameterValues("mem");
-					System.out.println(n); %>
+					String n = request.getParameter("pager");
+					System.out.println(n); 
+					%>
 						<c:forEach items="${mem}" var="mDTO">
 							<tr>
 								<td>${mDTO.id}</td>

@@ -19,6 +19,7 @@ public class NoticeController {
 	
 	@RequestMapping(value="noticeList")
 	public ModelAndView list(Pager pager) throws Exception{
+		System.out.println(pager.getCurBlock());
 		return noticeService.list(pager);
 	}
 	
