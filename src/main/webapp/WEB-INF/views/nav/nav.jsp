@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <nav
 	class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
 	id="mainNav">
@@ -19,9 +20,29 @@
 				<li class="nav-item mx-0 mx-lg-1"><a
 					class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
 					href="${pageContext.request.contextPath}/product/productist">Product</a></li>
+				
+				<c:choose>
+				<c:when test="${empty member}">
 				<li class="nav-item mx-0 mx-lg-1"><a
 					class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
 					href="${pageContext.request.contextPath}/member/login">Login</a></li>
+				
+				</c:when>
+				<c:otherwise>
+				<li class="nav-item mx-0 mx-lg-1"><a
+					class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+					href="${pageContext.request.contextPath}/member/logout">Logout</a></li>
+				<li class="nav-item mx-0 mx-lg-1"><a
+					class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+					href="${pageContext.request.contextPath}/member/modify">myPage</a></li>
+					<c:if test="${member.id eq 'iu' }">
+					<li class="nav-item mx-0 mx-lg-1"><a
+					class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+					href="${pageContext.request.contextPath}/member/list">list</a></li>		
+					</c:if>
+				</c:otherwise>
+					
+				</c:choose>
 			</ul>
 		</div>
 	</div>

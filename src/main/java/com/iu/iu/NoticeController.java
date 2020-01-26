@@ -54,7 +54,7 @@ public class NoticeController {
 		return noticeService.update(boardDTO);
 	}
 	
-	@RequestMapping(value="delete", method=RequestMethod.POST)
+	@RequestMapping(value="delete", method=RequestMethod.GET)
 	public ModelAndView delete(int num) throws Exception{
 		
 		return noticeService.delete(num);

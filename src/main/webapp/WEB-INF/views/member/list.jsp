@@ -1,6 +1,9 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>board List</title>
+<title>member List</title>
 
 <!-- Custom fonts for this theme -->
 
@@ -44,10 +47,10 @@ a:hover {
 </head>
 
 <body id="page-top">
-
+	
 	<!-- Navigation -->
 	<c:import url="../nav/nav.jsp"></c:import>
-
+	
 	<!-- Masthead -->
 
 
@@ -58,28 +61,34 @@ a:hover {
 				<table class="table table-responsive">
 					<thead>
 						<tr>
-							<th class="t1">Num</th>
-							<th class="t3">Name</th>
-							<th class="t2">Title</th>
-							<th class="t2">Content</th>
-							<th class="t4">Date</th>
-							<th class="t5">Hit</th>
+							<th class="t1">ID ${iu }</th>
+							<th class="t3">NAME${member.id}</th>
+							<th class="t2">EMAIL</th>
+							<th class="t2">PHONE</th>
+							<th class="t4">ADDRESS</th>
+							<th class="t5">GENDER</th>
+							<th class="t6">J_DATE</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${list }" var="dto">
-							<tr class="tr">
-								<td>${dto.num}</td>
-								<td>${dto.name}</td>
-								<td class="num"><a href="${board }One?num=${dto.num}">
-									 ${dto.title}
-								</a></td>
-								<td>${dto.content}</td>
-								<td>${dto.reg_date }</td>
-								<td>${dto.hit }</td>
+						
+					
+					<%
+					String[] n = request.getParameterValues("mem");
+					System.out.println(n); %>
+						<c:forEach items="${mem}" var="mDTO">
+							<tr>
+								<td>${mDTO.id}</td>
+								<td>${mDTO.name}</td>
+								<td>${mDTO.email}</td>
+								<td>${mDTO.phone}</td>
+								<td>${mDTO.address }</td>
+								<td>${mDTO.gender }</td>
+								<td>${mDTO.j_date }</td>
 							</tr>
-
 						</c:forEach>
+
+						
 
 					</tbody>
 				</table>
@@ -87,9 +96,6 @@ a:hover {
 
 			<!-- Pagination -->
 
-			<div class="btn btn-primary">
-				<a href="${board}Write"><span>Write</span></a>
-			</div>
 			<ul class="pagination justify-content-center">
 				<c:if test="${pager.curBlock>1}">
 					<li class="page-item"><a class="page-link"

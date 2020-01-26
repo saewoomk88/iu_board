@@ -39,23 +39,30 @@ a:hover {
 	<table width="500" cellpadding="0" cellspacing="0" border="1">
 		<tr>
 			<td>번호</td>
-			<td>${dto.num}</td>
-		</tr>
-		<tr>
-			<td>히트</td>
-			<td>${dto.hit}</td>
+			<td>${member.id}</td>
 		</tr>
 		<tr>
 			<td>이름</td>
-			<td>${dto.name}</td>
+			<td>${member.name}</td>
 		</tr>
 		<tr>
-			<td>제목</td>
-			<td>${dto.title}</td>
+			<td>email</td>
+			<td>${member.email}</td>
 		</tr>
 		<tr>
-			<td>내용</td>
-			<td>${dto.content}</td>
+			<td>phone</td>
+			<td>${member.phone}</td>
+		</tr>
+		<tr>
+			<td>주소</td>
+			<td>${member.address}</td>
+		</tr>
+		<tr>
+			<td>성별</td>
+			<td>${member.gender}</td>
+		</tr><tr>
+			<td>가입일</td>
+			<td>${member.j_date}</td>
 		</tr>
 		<tr>
 			<td colspan="2">
@@ -64,12 +71,9 @@ a:hover {
 				<div class="btn">
 					<a href="${board }List">List</a>
 				</div>
-				
-				<c:if test = "${member.id eq dto.name || member.id eq 'iu'}">
 				<div class="btn">
 					<a href="delete?num=${dto.num}">삭제</a>
 				</div>
-				</c:if>
 				<div class="btn">
 					<a href="boardUpdate?num=${dto.num}">답변</a>
 				</div>

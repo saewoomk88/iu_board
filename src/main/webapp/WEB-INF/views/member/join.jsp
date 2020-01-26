@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,19 +30,60 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/freelancer.min.css"
 	rel="stylesheet">
+	<script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$("#btn").click(function() {
-			var title = $("#title").val();
-			if (title != "") {
-				$("#frm").submit();
-			} else {
-				alert("제목을 입력하세요");
+		
+		$("#id").blur(function() {
+			var id = $('#id').val();
+			if(id.length>=6){
+				
+					alert("합격");
+					return true;
+			
+			}else{
+				alert("6글자 이상");
+				
+				return false;
 			}
 		});
+		
+		$("#pw").blur(function() {
+			var exp= /^([0-9]+[a-z])+$/;
+			var pw = $('#pw').val();
+			if(pw.match(exp) || pw.length>=6 && pw.length<=12){
+				
+					alert("합격");
+					return true;
+			
+			}else{
+				alert("정규식,길이 땡");
+				
+				return false;
+			}
+		});
+		
+		$("#btn").click(function() {
+			var id = $("#frm").val();
+			
+			if (id != "") {
+				$("#frm").submit();
+			} else {
+				alert("입력안한 곳이 있습니다.");
+			}
+		
+		});
+		
+		
+		
 
 	})
 </script>
+<style type="text/css">
+#frm {
+	margin-top: 20px;
+}
+</style>
 </head>
 
 <body id="page-top">
@@ -55,26 +97,49 @@
 	<section class="page-section portfolio" id="portfolio">
 		<div class="container-fluid">
 			<div class="row">
-				<form id="frm" action="${board}Write" method="post">
+				<form id="frm" action="join" method="post">
 					<div class="form-group">
-						<label for="name">Name:</label> <input type="text"
-							class="form-control" id="name" readonly="readonly"
-							value="${member.id }" name="name">
+						<label for="id">ID:</label> <input type="text"
+							class="form-control" id="id"
+							name="id">
 					</div>
 					<div class="form-group">
-						<label for="title">Title:</label> <input type="text"
-							class="form-control" id="title" placeholder="Enter Title"
-							name="title">
+						<label for="pw">PW:</label> <input type="password"
+							class="form-control" id="pw"
+							name="pw">
 					</div>
 					<div class="form-group">
-						<label for="content">Content:</label>
-						<textarea rows="15" cols="" class="form-control" name="content"></textarea>
+						<label for="name">NAME:</label> <input type="text"
+							class="form-control" id="name"
+							name="name">
 					</div>
-					<script type="text/javascript">
-						CKEDITOR.replace('content')
-					</script>
+					<div class="form-group">
+						<label for="email">email:</label> <input type="email"
+							class="form-control" id="email"
+							name="email">
+					</div>
+					<div class="form-group">
+						<label for="phone">phone:</label> <input type="text"
+							class="form-control" id="phone" placeholder="-없이 입력하세요"
+							name="phone">
+					</div>
+					<div class="form-group">
+						<label for="address">주소:</label> <input type="text"
+							class="form-control" id="address"
+							name="address">
+					</div>
+						<div class="form-group">
+						<label for="gender">성별:</label>남 <input type="radio"
+							class="form-control" id="gender"
+							name="gender" value="man">
+							여
+							<input type="radio"
+							class="form-control" id="gender"
+							name="gender" value="woman">
+					</div>
+				
 
-					<input type="button" id="btn" class="btn btn-default" value="등록">
+					<input type="button" id="btn" class="btn btn-default" value="가입">
 				</form>
 			</div>
 		</div>
@@ -89,7 +154,7 @@
 	<script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Plugin JavaScript -->
-	<script src="../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+	
 
 	<!-- Contact Form JavaScript -->
 	<script src="../resources/js/jqBootstrapValidation.js"></script>

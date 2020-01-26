@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +40,32 @@
 				alert("제목을 입력하세요");
 			}
 		});
+		var count = 1;
+		var index = 0;
+		$("#file_btn")
+				.click(
+						function() {
+							if (count < 6) {
+								var r = '<div class="form-group" id="fname'+index+'">';
+								var r = r + '<label for="file">사진:</label>';
+								var r = r
+										+ '<input type="file" class="form-control" id="file" name="fname'+index+'">';
+								var r = r
+										+ '<span class="remove" title="'+index+'">X</span>';
+								var r = r + '</div>';
+								$("#file").append(r);
+								count++;
+								index++;
+							} else {
+								alert("파일은 최대 5개 입니다.");
+							}
+						});
 
+		$("#file").on("click", ".remove", function() {
+			var t = $(this).attr("title");
+			$("#fname" + t).remove();
+			count--;
+		});
 	})
 </script>
 </head>
@@ -55,24 +81,32 @@
 	<section class="page-section portfolio" id="portfolio">
 		<div class="container-fluid">
 			<div class="row">
-				<form id="frm" action="${board}Write" method="post">
-					<div class="form-group">
-						<label for="name">Name:</label> <input type="text"
-							class="form-control" id="name" readonly="readonly"
-							value="${member.id }" name="name">
-					</div>
+				<form id="frm" action="./${board}Write.jsp" method="post"
+					enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="title">Title:</label> <input type="text"
 							class="form-control" id="title" placeholder="Enter Title"
 							name="title">
 					</div>
 					<div class="form-group">
-						<label for="content">Content:</label>
-						<textarea rows="15" cols="" class="form-control" name="content"></textarea>
+						<label for="writer">Writer:</label> <input type="text"
+							class="form-control" id="writer" readonly="readonly"
+							value="${member.id}" name="writer">
+					</div>
+
+					<div class="form-group">
+						<label for="contents">Contents:</label>
+						<textarea rows="15" cols="" class="form-control" name="contents"></textarea>
 					</div>
 					<script type="text/javascript">
-						CKEDITOR.replace('content')
+						CKEDITOR.replace('contents')
 					</script>
+
+
+
+					<input id="file_btn" type="button" value="추가"
+						class="btn btn-default">
+					<div class="files" id="file"></div>
 
 					<input type="button" id="btn" class="btn btn-default" value="등록">
 				</form>

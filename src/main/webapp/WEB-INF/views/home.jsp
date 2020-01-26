@@ -28,7 +28,16 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/freelancer.min.css"
 	rel="stylesheet">
-
+		<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	
+	var msg = '${param.msg}';
+	if(msg != ''){
+		alert(msg);
+	}
+})
+</script>
 </head>
 
 <body id="page-top">
@@ -634,7 +643,7 @@
 </div>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="/resources/vendor/jquery/jquery.min.js"></script>
+
 	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Plugin JavaScript -->

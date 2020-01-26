@@ -47,7 +47,7 @@ public class NoticeService implements BoardService{
 	public ModelAndView insert(BoardDTO boardDTO) throws Exception{
 		// TODO Auto-generated method stub
 		ModelAndView mv = new ModelAndView();
-		noticeDAO.insert(boardDTO);
+		mv.addObject(noticeDAO.insert(boardDTO));
 		mv.setViewName("redirect:noticeList");
 		return mv;
 	}

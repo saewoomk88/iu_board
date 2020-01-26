@@ -10,8 +10,6 @@ public class BoardDTO {
 	private String content;
 	private Date reg_date;
 	private int hit;
-	
-	
 	public int getNum() {
 		return num;
 	}
@@ -36,10 +34,10 @@ public class BoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getDate() {
+	public Date getReg_date() {
 		return reg_date;
 	}
-	public void setDate(Date reg_date) {
+	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
 	public int getHit() {
@@ -48,6 +46,7 @@ public class BoardDTO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+	
 	
 	
 

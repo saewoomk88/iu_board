@@ -15,7 +15,7 @@ public class Pager {
 	private int lastNum;
 	
 	public Pager() {
-		this.pageList=10;
+		this.pageList=5;
 		this.perBlock=5;
 	}
 	

@@ -24,6 +24,6 @@
 	<context:component-scan base-package="com.iu.iu" />
 	<context:component-scan base-package="com.iu.notice" />
 	<context:component-scan base-package="com.iu.util" />
-	
+	<context:component-scan base-package="com.iu.member" />
 	
 </beans:beans>
